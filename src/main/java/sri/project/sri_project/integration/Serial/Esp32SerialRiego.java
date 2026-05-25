@@ -18,7 +18,7 @@ import sri.project.sri_project.integration.ControlRiego;
 
 
 @Component
-public class Esp32SerialRiego implements ControlRiego {
+public class Esp32SerialRiego  {
     
 
     private final Esp32ConnecionPort port;
@@ -28,7 +28,7 @@ public class Esp32SerialRiego implements ControlRiego {
     }
     
 
-    @Override
+
     public void enviarComando(int comando) {
         if (port != null && port.estaConectado()) {
             String cmd = comando + "\n";

@@ -6,7 +6,6 @@ package sri.project.sri_project.service.serviceImpl;
 
 
 import sri.project.sri_project.service.DetenerRiegoService;
-import sri.project.sri_project.repository.EstadisticasRepository;
 import sri.project.sri_project.integration.ControlRiego;
 import sri.project.sri_project.model.EstadoSistema;
 import sri.project.sri_project.model.TanqueAgua;
@@ -26,14 +25,14 @@ public class DetenerRiegoServiceImpl implements DetenerRiegoService {
     private final ControlRiego port;
     private final TanqueAgua tanque;
 
-    private EstadisticasRepository repository;
+
 
     private static final int DETENER_RIEGO = 0;
 
-    public DetenerRiegoServiceImpl(ControlRiego port, TanqueAgua tanque, EstadisticasRepository repository) {
+    public DetenerRiegoServiceImpl(ControlRiego port, TanqueAgua tanque ) {
         this.port = port;
         this.tanque = tanque;
-        this.repository = repository;
+
     }
     
 
@@ -59,12 +58,7 @@ public class DetenerRiegoServiceImpl implements DetenerRiegoService {
         * */
 
         if (tanque.getEstadoActual() != EstadoSistema.BLOQUEADO_SIN_AGUA) {
-            repository.registrarSesionRiego(
-                    "MANUAL",
-                    tanque.getHumedadAlIniciarManual(),
-                    tanque.getHumedad(),
-                    "APAGADO_MANUAL"
-            );
+
         }
 
 

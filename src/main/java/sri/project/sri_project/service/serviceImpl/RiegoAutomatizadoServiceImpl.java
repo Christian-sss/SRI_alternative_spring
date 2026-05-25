@@ -4,7 +4,6 @@ import sri.project.sri_project.model.EstadoSistema;
 import sri.project.sri_project.service.DetenerRiegoService;
 import sri.project.sri_project.service.IniciarRiegoService;
 import sri.project.sri_project.service.RiegoAutomatizadosService;
-import sri.project.sri_project.repository.EstadisticasRepository;
 import org.springframework.stereotype.Service;
 import sri.project.sri_project.model.TanqueAgua;
 
@@ -15,16 +14,16 @@ public class RiegoAutomatizadoServiceImpl implements RiegoAutomatizadosService {
     private final IniciarRiegoService riegoInicioManual;
     private final DetenerRiegoService riegoDetenido;
     private final TanqueAgua tanque;
-    private EstadisticasRepository estadisticasRepository;
+
 
 
     private static final int HUMEDAD_MINIMA = 30;
     private static final int HUMEDAD_MAXIMA = 60;
-    public RiegoAutomatizadoServiceImpl(IniciarRiegoService riegoInicio, DetenerRiegoService riegoDetenido, TanqueAgua tanque, EstadisticasRepository repository) {
+    public RiegoAutomatizadoServiceImpl(IniciarRiegoService riegoInicio, DetenerRiegoService riegoDetenido, TanqueAgua tanque) {
         this.riegoInicioManual = riegoInicio;
         this.riegoDetenido = riegoDetenido;
         this.tanque = tanque;
-        this.estadisticasRepository = repository;
+
     }
 
     @Override
@@ -61,13 +60,6 @@ public class RiegoAutomatizadoServiceImpl implements RiegoAutomatizadosService {
                 if (!tanque.isBombaActiva()) System.out.println("Alguien apagó la bomba manualmente.");
                 if (tanque.getHumedad() >= HUMEDAD_MAXIMA) System.out.println("Motivo: Humedad objetivo (" + HUMEDAD_MAXIMA + "%) alcanzada.");
                 if (!tanque.hayAgua()) System.out.println("EL TANQUE SE QUEDÓ SIN AGUA! (Distancia > 18cm)");
-
-                estadisticasRepository.registrarSesionRiego(
-                        "AUTOMATICO",
-                        humedadAlIniciar,
-                        tanque.getHumedad(),
-                        ""
-                );
 
 
 

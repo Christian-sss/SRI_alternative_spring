@@ -4,12 +4,15 @@
  */
 package sri.project.sri_project.service;
 
+import org.springframework.context.annotation.Bean;
 import sri.project.sri_project.model.User;
 
 /**
  *
  * @author Usuario
  */
+
+
 public interface UsuarioService {
     
        User ejecutar(String username, String passwordIngresada);
