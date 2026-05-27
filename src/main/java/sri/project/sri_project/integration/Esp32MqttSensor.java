@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.eclipse.paho.client.mqttv3.*;
 import org.springframework.stereotype.Component;
-import sri.project.sri_project.model.dto.SensorData;
+import sri.project.sri_project.dto.SensorData;
 
 import java.util.function.Consumer;
 
@@ -20,6 +20,7 @@ public class Esp32MqttSensor {
 
     @Getter
     private SensorData ultimoDato;
+
     public Esp32MqttSensor(Esp32MqttConnectionManager mqtt) {
         this.mqtt = mqtt;
     }
@@ -34,50 +35,32 @@ public class Esp32MqttSensor {
 
             client.subscribe("upt/riego/datos");
 
-            client.setCallback(
-                    new MqttCallback() {
+            client.setCallback(new MqttCallback() {
+                @Override
+                public void connectionLost(Throwable cause) {
+                    System.err.println("[MQTT] Conexión perdida");
+                }
 
-                        @Override
-                        public void connectionLost(
-                                Throwable cause
-                        ) {
+                @Override
+                public void messageArrived(String topic, MqttMessage message) {
 
-                            System.err.println(
-                                    "[MQTT] Conexión perdida"
-                            );
-                        }
+                    String texto = new String(message.getPayload());
+                    parsearLinea(texto);
+                }
 
-                        @Override
-                        public void messageArrived(
-                                String topic,
-                                MqttMessage message
-                        ) {
+                @Override
+                public void deliveryComplete(
+                        IMqttDeliveryToken token
+                ) {
 
-                            String texto =
-                                    new String(
-                                            message.getPayload()
-                                    );
+                }
+            });
 
-                            parsearLinea(texto);
-                        }
-
-                        @Override
-                        public void deliveryComplete(
-                                IMqttDeliveryToken token
-                        ) {
-
-                        }
-                    });
-
-            System.out.println(
-                    "[MQTT] Suscrito a sensores"
-            );
+            System.out.println("[MQTT] Suscrito a sensores");
 
         } catch (MqttException e) {
 
-            System.err.println(
-                    "[MQTT] Error subscriber"
-            );
+            System.err.println("[MQTT] Error subscriber");
 
             e.printStackTrace();
         }
@@ -95,9 +78,7 @@ public class Esp32MqttSensor {
             String[] partes = linea.split(",");
 
             if (partes.length != 2) {
-
                 System.err.println("Formato inválido");
-
                 return;
             }
 
@@ -109,7 +90,6 @@ public class Esp32MqttSensor {
             ultimoDato = sensorData;
 
             if (onDataReceived != null) {
-
                 onDataReceived.accept(sensorData);
             }
 

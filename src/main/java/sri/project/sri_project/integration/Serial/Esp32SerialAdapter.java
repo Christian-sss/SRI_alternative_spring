@@ -16,7 +16,7 @@ package sri.project.sri_project.integration.Serial;
 import com.fazecast.jSerialComm.SerialPort;
 import com.fazecast.jSerialComm.SerialPortDataListener;
 import com.fazecast.jSerialComm.SerialPortEvent;
-import sri.project.sri_project.model.dto.SensorData;
+import sri.project.sri_project.dto.SensorData;
 import org.springframework.stereotype.Component;
 
 import java.util.function.Consumer;

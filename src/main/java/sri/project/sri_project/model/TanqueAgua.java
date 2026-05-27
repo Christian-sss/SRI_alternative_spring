@@ -6,6 +6,7 @@ package sri.project.sri_project.model;
 
 
 import org.springframework.stereotype.Component;
+import sri.project.sri_project.model.enums.EstadoSistema;
 
 @Component
 public class TanqueAgua {

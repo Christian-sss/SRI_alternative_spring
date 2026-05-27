@@ -1,7 +1,7 @@
 package sri.project.sri_project.service.serviceImpl;
 
 
-import sri.project.sri_project.model.dto.SensorData;
+import sri.project.sri_project.dto.SensorData;
 import sri.project.sri_project.model.TanqueAgua;
 import sri.project.sri_project.model.Policy.SeguridadHidrica;
 import org.springframework.stereotype.Service;

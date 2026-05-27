@@ -7,7 +7,7 @@ package sri.project.sri_project.service.serviceImpl;
 
 import sri.project.sri_project.service.IniciarRiegoService;
 import sri.project.sri_project.integration.ControlRiego;
-import sri.project.sri_project.model.EstadoSistema;
+import sri.project.sri_project.model.enums.EstadoSistema;
 import sri.project.sri_project.model.TanqueAgua;
 
 import org.springframework.stereotype.Service;

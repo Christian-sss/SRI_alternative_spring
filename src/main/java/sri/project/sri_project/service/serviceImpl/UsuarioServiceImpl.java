@@ -28,18 +28,13 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 
     @Override
-    public User ejecutar(String username, String passwordHash) {
+    public User ejecutar(String email, String passwordHash) {
 
         var user = usuarioRepository
-                .findByUsername(username)
+                .findByEmail(email)
                 .orElseThrow(() -> new IllegalArgumentException(""));
 
-
         try {
-            if (!user.isActivo()) {
-                throw new Exception("Su cuenta está desactivada.");
-            }
-
 
             if (!passwordHash.equals(user.getPasswordHash())) {
                 throw new Exception("Contraseña incorrecta.");

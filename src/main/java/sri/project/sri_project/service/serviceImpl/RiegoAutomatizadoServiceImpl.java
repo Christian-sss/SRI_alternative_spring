@@ -1,6 +1,6 @@
 package sri.project.sri_project.service.serviceImpl;
 
-import sri.project.sri_project.model.EstadoSistema;
+import sri.project.sri_project.model.enums.EstadoSistema;
 import sri.project.sri_project.service.DetenerRiegoService;
 import sri.project.sri_project.service.IniciarRiegoService;
 import sri.project.sri_project.service.RiegoAutomatizadosService;

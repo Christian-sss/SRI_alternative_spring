@@ -5,10 +5,12 @@
 package sri.project.sri_project.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.annotation.processing.Generated;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -17,41 +19,27 @@ import javax.annotation.processing.Generated;
  * */
 
 
-@Getter
-@Setter
+@Data
 @Entity
 @Table(name = "usuarios")
 public class User {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String username;
+
+    @Column(name = "nombre")
+    private String nombre;
+
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "password_hash")
     private String passwordHash;
-    private String rol;
-    private String estado;
 
-
-    public User() {
-    }
-
-
-    public User(Integer id, String username, String passwordHash, String rol, String estado) {
-        this.id = id;
-        this.username = username;
-        this.passwordHash = passwordHash;
-        this.rol = rol;
-        this.estado = estado;
-    }
-
-
-    public boolean isActivo() {
-        return "ACTIVO".equalsIgnoreCase(this.estado);
-    }
-
-
-
+    @Column(name = "fecha_creacion", insertable = false, updatable = false)
+    private LocalDateTime fechaCreacion;
 
 
 }

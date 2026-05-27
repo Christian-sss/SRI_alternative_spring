@@ -1,4 +1,4 @@
-package sri.project.sri_project.model;
+package sri.project.sri_project.model.enums;
 
 public enum EstadoSistema {
     REGANDO,

@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import sri.project.sri_project.integration.Esp32MqttSensor;
-import sri.project.sri_project.model.dto.SensorData;
+import sri.project.sri_project.dto.SensorData;
 
 @Controller
 @RequestMapping("/sensor")

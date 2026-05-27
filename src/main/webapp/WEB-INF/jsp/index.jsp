@@ -8,5 +8,12 @@
 
 <h1>${mensaje}</h1>
 
+<a href="/reportes/modos-riego" target="_blank" class="btn btn-primary">
+    Ver Reporte de Riego (PDF)
+</a>
+
+<iframe src="/reportes/modos-riego" width="100%" height="600px"></iframe>
+
+
 </body>
 </html>

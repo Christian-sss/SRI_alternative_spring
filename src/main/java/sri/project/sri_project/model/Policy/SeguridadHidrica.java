@@ -12,7 +12,7 @@ package sri.project.sri_project.model.Policy;
 
 
 import sri.project.sri_project.model.TanqueAgua;
-import sri.project.sri_project.model.EstadoSistema;
+import sri.project.sri_project.model.enums.EstadoSistema;
 import org.springframework.stereotype.Component;
 
 

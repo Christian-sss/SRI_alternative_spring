@@ -1,4 +1,4 @@
-package sri.project.sri_project.model.dto;
+package sri.project.sri_project.dto;
 
 public record SensorData(
         int humedad,
