@@ -14,7 +14,7 @@ public class LoginController {
 
         model.addAttribute("mensaje", "Entonces se puede cambiar desde un metodo");
 
-        return "index";
+        return "login";
     }
 
 }

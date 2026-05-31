@@ -12,6 +12,6 @@ public class HomeController {
 
         model.addAttribute("mensaje", "Spring Boot con JSP funcionando");
 
-        return "index";
+        return "login";
     }
 }
